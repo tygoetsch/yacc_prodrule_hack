@@ -36,3 +36,8 @@ No known bugs (yet)
 Please inform me if you find any.
 
 The lex is meant to ignore everything inside of comments, but I haven't done extensive testing on that yet.
+
+## Notes
+
+_noun:_ **hack**; _plural noun:_ **hacks**\n
+\t a piece of computer code providing a quick or inelegant solution to a particular problem

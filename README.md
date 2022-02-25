@@ -40,4 +40,4 @@ The lex is meant to ignore everything inside of comments, but I haven't done ext
 ## Notes
 
 _noun:_ **hack**; _plural noun:_ **hacks**<br>
-<nbsp /> a piece of computer code providing a quick or inelegant solution to a particular problem
+       a piece of computer code providing a quick or inelegant solution to a particular problem

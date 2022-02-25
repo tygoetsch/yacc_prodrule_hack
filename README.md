@@ -31,9 +31,9 @@ If the tool compiles successfully, there will be an executable named `pr_hack`.
 
 ## Bugs
 
-No known bugs (yet)
+Will output an enum member for identical product rule names...which is a problem if you use them more than once. Will possibly add a fix for this soon.
 
-Please inform me if you find any.
+Please inform me if you find any other issues.
 
 The lex is meant to ignore everything inside of comments, but I haven't done extensive testing on that yet.
 

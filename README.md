@@ -2,7 +2,7 @@
 
 This C program uses Flex to scan your Bison/YACC file for production rule identifiers beginning with `_PR_`.
 
-An `enum` is created in a header file with the name `<inputfilename>_pr.h`.
+An `enum` is created in a header file with the name `<inputfilename>_pr.h`. This is useful for creating unique identifiers for each production rule without having to painstakingly create and update the `enum` yourself.
 
 Every production rule identifier prefixed with `_PR_` will appear in the `enum`.
 

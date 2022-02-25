@@ -31,7 +31,7 @@ If the tool compiles successfully, there will be an executable named `pr_hack`.
 
 ## Bugs
 
-Will output an enum member for identical product rule names...which is a problem if you use them more than once. Will possibly add a fix for this soon.
+Will output multiple enum members for identical product rule names...which is a problem if you use them more than once. Will possibly add a fix for this soon.
 
 Please inform me if you find any other issues.
 

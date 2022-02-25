@@ -31,3 +31,5 @@ If the tool compiles successfully, there will be an executable named `pr_hack`.
 No known bugs (yet)
 
 Please inform me if you find any.
+
+The lex is meant to ignore everything inside of comments, but I haven't done extensive testing on that yet.

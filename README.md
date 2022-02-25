@@ -24,6 +24,8 @@ If the tool compiles successfully, there will be an executable named `pr_hack`.
 
 3. Run `./pr_hack <inputfile>.y` (you must rename your product rules with prefix `_PR_`, or the `enum` will be barren).
 
+- You could also copy the `pr_hack` executable to another directory for ease of use.
+
 ## Bugs
 
 No known bugs (yet)

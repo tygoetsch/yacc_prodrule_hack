@@ -1,10 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 
 extern int yylex();
 extern char* yytext;
 extern FILE* yyin;
+extern int yylex_destroy(void);
+char* string_to_upper(char* src);
 
 /**
  * scans the input file for uppercase tokens prefixed by "_PR_"
@@ -27,9 +30,12 @@ int main(int argc, char *argv[]) {
     	while (--argc > 0) {
 			++argv;
 
-    		if ((yyin = fopen(*argv, "r")) == NULL) {
+            yyin = fopen(*argv, "r");
+
+    		if (yyin == NULL) {
             	printf("can't open %s\n", *argv);
-				continue;
+                fclose(yyin);
+				exit(1);
             }
 
 			yytext = NULL;
@@ -45,15 +51,28 @@ int main(int argc, char *argv[]) {
 			FILE *opfile = NULL;
 			if ((opfile = fopen(buf, "wx")) == NULL) {
 				printf("file %s already exists.\n", buf);
+                fclose(yyin);
 				exit(1);
 			}
 
 			/* construct an enum in the output file */
 			fprintf(opfile, "typedef enum {\n");
+            char* prod_rule = NULL;
 
         	while (yylex() == 42) {
-				printf("%s\n", yytext);
-				fprintf(opfile, "\t%s,\n", yytext);
+                int i = 0;
+                prod_rule = string_to_upper(yytext);
+
+                fprintf(opfile, "\t");
+
+                while (prod_rule[i] != ':') {
+                    printf("%c", prod_rule[i]);
+                    fprintf(opfile, "%c", prod_rule[i]);
+                    i++;
+                }
+                printf("\n");
+                fprintf(opfile, "\n");
+                free(prod_rule);
 			}
 
 			fprintf(opfile, "} prodrule;\n");
@@ -61,10 +80,22 @@ int main(int argc, char *argv[]) {
 			/* close files */
 			fclose(opfile);
 			fclose(yyin);
-
     	}
-
 	}
 
+    yylex_destroy();
     return 0;
+}
+
+
+char* string_to_upper(char* src) {
+    size_t len = strlen(src);
+    char* dest = calloc(1, len+1);
+    if (!dest) { return NULL; }
+
+    for (int i = 0; i < len; i++) {
+        dest[i] = toupper((unsigned char)src[i]);
+    }
+
+    return dest;
 }

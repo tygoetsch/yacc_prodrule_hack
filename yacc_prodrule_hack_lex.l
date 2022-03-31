@@ -17,7 +17,8 @@
 \"([^"\n]|("\\\""))*\"			{ /* ignore string literals */ }
 
 
-_PR_[A-Z0-9_]+					{ return 42; }
+_PR_[A-Za-z0-9_]+\:				{ return 42; }
+[A-Za-z0-9_]+\:					{ return 42; }
 [A-Z0-9_]+						{ /* ignore longer words containing NT_ */ }
 
 .								{ /* ignore all other characters */ }

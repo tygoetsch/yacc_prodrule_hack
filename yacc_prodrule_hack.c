@@ -59,6 +59,7 @@ int main(int argc, char *argv[]) {
 			fprintf(opfile, "typedef enum {\n");
             char* prod_rule = NULL;
 
+            int h = 0;
         	while (yylex() == 42) {
                 int i = 0;
                 prod_rule = string_to_upper(yytext);
@@ -70,8 +71,12 @@ int main(int argc, char *argv[]) {
                     fprintf(opfile, "%c", prod_rule[i]);
                     i++;
                 }
+                if (h == 0) { 
+                    fprintf(opfile, " = 1000"); 
+                    h++;
+                }
                 printf("\n");
-                fprintf(opfile, "\n");
+                fprintf(opfile, ",\n");
                 free(prod_rule);
 			}
 
